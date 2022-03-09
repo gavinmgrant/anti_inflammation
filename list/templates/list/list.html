@@ -1,0 +1,46 @@
+{% extends "list/layout.html" %}
+{% load static %}
+
+{% block body %}
+  <h1 class="display-4">My List</h1>
+
+  {% if foods_count == 0 %}
+    <div class="text-center">
+      <p>No food in your list.</p>
+      <button class="btn btn-success" onclick="window.location.href='/'">Add food</button>
+    </div>
+  {% endif %}
+
+  {% for food in foods %}
+    <div class="card mb-3" data-food-id="{{ food.id }}">
+      <div class="card-body">
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
+          <div class="d-flex flex-column flex-sm-row justify-content-start align-items-center">
+            <img src="{% static 'images/' %}{{ food.id }}.png" alt="{{ food.name }}" class="img-fluid" width="120" height="120">
+            <h4 class="food m-3 form-check" data-food-id="{{ food.id }}">
+              <input class="form-check-input" style="width:20px;height:20px" type="checkbox" data-food-id="{{ food.id }}">
+              <label class="form-check-label pl-3 m-0" style="text-decoration:none;" data-food-id="{{ food.id }}"><h4 class="m-0">{{ food.name }}</label>
+            </h4>
+          </div>
+          <button class="btn btn-danger remove" data-food-id="{{ food.id }}">Remove</button>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="pagination mt-3">
+    {% if foods.has_previous %}
+        <a id="prev" href="?page={{ foods.previous_page_number }}" class="m-2"><span style="font-weight:700;">&#8678;</span> Previous</a>
+    {% endif %}
+    
+    {% if foods_count > 20 %}
+    <span class="m-2">
+        Page {{ foods.number }} of {{ foods.paginator.num_pages }}
+    </span>
+    {% endif %}
+
+    {% if foods.has_next %}
+        <a id="next" href="?page={{ foods.next_page_number }}" class="m-2">Next <span style="font-weight:700;">&#8680;</span></a>
+    {% endif %}
+</div>
+{% endblock %}
