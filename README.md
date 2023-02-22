@@ -1,6 +1,6 @@
 # Anti-Inflammatory Foods
 
-This is a full-stack web app that utilizes Django on the back-end and JavaScript on the front-end. The purpose of this project is to allow users to browser foods with anti-inflammatory properties and add them to their own shopping list. Foods on their list can be crossed off to note they have been obtained or removed from the list completely.
+This is a full-stack web app that utilizes Django on the back-end and JavaScript on the front-end. The purpose of this project is to allow users to browse foods with anti-inflammatory properties and add them to their own shopping lists. Foods on their list can be crossed off to note they have been obtained or removed from the list completely.
 
 ## Responsive Design
 
